@@ -182,7 +182,7 @@ class ObservableTests: XCTestCase {
         let getFull = { "\($0 as String) \($1 as String)" }
         var full = getFull(first^, last^)
         
-        either.afterChange += { full = getFull($0, $1) }
+        either.afterChange += { full = getFull($0.0, $0.1) }
         
         last <- "Snow"
         XCTAssertEqual(full, "John Snow", "Should update when first element changes")
@@ -202,7 +202,7 @@ class ObservableTests: XCTestCase {
         let getFull = { "\($0 as String) \($1 as String) \($2 as String)" }
         var full = getFull(title^, first^, last^)
 
-        either3.afterChange += { full = getFull($0.0, $0.1, $1) }
+        either3.afterChange += { full = getFull($0.0.0, $0.0.1, $0.1) }
         
         last <- "Snow"
         title <- "Bastard"
