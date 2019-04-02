@@ -179,7 +179,7 @@ class ObservableTests: XCTestCase {
         
         let either = first & last
         
-        let getFull = { "\($0 as String) \($1 as String)" }
+        let getFull: ((String, String) -> String) = { "\($0 as String) \($1 as String)" }
         var full = getFull(first^, last^)
         
         either.afterChange += { full = getFull($0.0, $0.1) }
@@ -199,7 +199,7 @@ class ObservableTests: XCTestCase {
         var (title, first, last) = (Observable("Mr."), Observable("John"), Observable("Smith"))
         let either3 = title & first & last
         
-        let getFull = { "\($0 as String) \($1 as String) \($2 as String)" }
+        let getFull:  ((String, String, String) -> String) = { "\($0 as String) \($1 as String) \($2 as String)" }
         var full = getFull(title^, first^, last^)
 
         either3.afterChange += { full = getFull($0.0.0, $0.0.1, $0.1) }
