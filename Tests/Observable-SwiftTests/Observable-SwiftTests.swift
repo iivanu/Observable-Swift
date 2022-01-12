@@ -8,7 +8,7 @@
 
 import XCTest
 
-import Observable
+import Observable_Swift
 
 class ObservableTests: XCTestCase {
     
